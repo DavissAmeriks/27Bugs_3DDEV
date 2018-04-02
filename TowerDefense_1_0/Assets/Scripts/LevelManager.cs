@@ -4,12 +4,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class LevelManager : MonoBehaviour
+public class LevelManager : Singleton<LevelManager>
 {// Masīvs ar tilePrefabs, tos izmantos izveidojot tiles spēlē
     [SerializeField]
     private GameObject[] tilePrefabs; // Lai izveidotu Tile
     [SerializeField]
     private CameraMovement cameraMovement;
+
+    [SerializeField]
+    private Transform map;
+
+    private Point blackSpawn, redSpawn;
+
+    [SerializeField]
+    private GameObject blackPortalPrefab;
+    [SerializeField]
+    private GameObject redPortalPrefab;
+
+    
 
     public Dictionary<Point, TileScript> Tiles { get; set; }
     // Lai atgrieztu tile size
@@ -57,6 +69,7 @@ public class LevelManager : MonoBehaviour
 
         cameraMovement.SetLimits(new Vector3(maxTile.x + TileSize, maxTile.y - TileSize));
 
+        SpawnPortals();
     }
 
     private void PlaceTile(string tileType, int x, int y, Vector3 worldStart)
@@ -64,9 +77,9 @@ public class LevelManager : MonoBehaviour
         int tileIndex = int.Parse(tileType);
         TileScript newTile = Instantiate(tilePrefabs[tileIndex]).GetComponent<TileScript>(); //Izveido tile,Reference izveidotajam Tile
         // lai mainītu tile poziciju
-        newTile.Setup(new Point(x, y), new Vector3(worldStart.x + (TileSize * x), worldStart.y - (TileSize * y), 0));
+        newTile.Setup(new Point(x, y), new Vector3(worldStart.x + (TileSize * x), worldStart.y - (TileSize * y), 0), map);
 
-        Tiles.Add(new Point(x, y), newTile);
+        
 
        // return newTile.transform.position;
     }
@@ -78,6 +91,19 @@ public class LevelManager : MonoBehaviour
         string data = bindData.text.Replace(Environment.NewLine, string.Empty);
 
         return data.Split('-');
+    }
+
+    private void SpawnPortals()
+    {
+        blackSpawn = new Point(0, 0);
+
+        Instantiate(blackPortalPrefab, Tiles[blackSpawn].GetComponent<TileScript>().WorldPosition, Quaternion.identity);
+
+        
+        redSpawn = new Point(11, 6);
+
+        Instantiate(redPortalPrefab, Tiles[redSpawn].GetComponent<TileScript>().WorldPosition, Quaternion.identity);
+
     }
 
 }
