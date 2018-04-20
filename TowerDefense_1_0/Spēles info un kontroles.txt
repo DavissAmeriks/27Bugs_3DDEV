@@ -1,0 +1,14 @@
+﻿Spele - Space Bugs;
+2D spele, kontroles: ar peles kreiso peles pogu visas darbibas tiek veiktas. Ja velas var
+pakustinat "karti" ar W A S D pogam bet tas nav nekas vajadzigs priekš spelešanas.
+Labaja augšeja sturi radas dzivibas, velejos lai ir uz kada sirds fona, bet nepietika laika,
+tadel tur vienkarši ar baltiem burtiem parada cik pašlaik ir dzivibas.
+Speletajam sakuma ir 10 dzivibas, par katru bug kas tiek lidz sarkanajam portal = -1 hp;
+Sakuma nauda ir 10 EUR, ar ko var iegadaties tornus lai nošautu bugs.
+Divu veidu torni Trumps(2 EUR) un Rencis(5EUR), Rencim ir 3x atraks šaušanas speeds.
+Ir kadi actual bugi spele palikuši kurus nemaceju un nepietika laika noverst.
+Domaju ka prasibas izpildiju visas ja pareizi sapratu, Blend file importeju, bet pašu speli spelejot
+tam nav nekada ietekme, jo nav tad nemaz redzams, bet importeju..
+Spele beidzas tikai tad kad pazaude visas 10 dzivibas, kas agrak vai velak notiks jo beigsies vieta kur
+celt tornus un bugs paliek stipraki un vairaki ar nakamajos limenos visu laiku.
+Kad dzivibas aiziet uz 0, uzmetisies logs ar Game Over un iespeju sakt no jauna vai Quit.
